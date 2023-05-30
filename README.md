@@ -1,7 +1,7 @@
 
 # Twitter Clone
 
-I made twitter clone with nextjs. I focused on new app directory and server/client component futures. This new backend on fronted approach with server components makes creating full-stack aps so easy and provides more performance. For better User Exp. I render first states on backend and get html then i manage state with react-query the way i manage single page apps.
+I have created a Twitter clone using Next.js. I have focused on the new app directory structure and server/client component features. This new approach of using server components in the frontend makes it easy to create full-stack apps and provides better performance. To enhance the user experience, I render the initial states on the backend and retrieve the HTML, then I manage the state with react-query, similar to how I manage single-page apps.
 
 # Preview 
 
@@ -47,18 +47,18 @@ Install my-project with npm
 **Tables and relations:**
 ![App Screenshot](https://www.linkpicture.com/q/Screenshot-from-2023-05-29-01-19-34.png)
 
-**route: / (root path)**: here i get data on backend and generate initial posts (like 10 posts) and render for initial html. So when user visit this route, user sees initial posts directly as i show on preview video. Then i manage query and action with react-query especially infiniteQuery(infinite scroll) to render more posts.
+**route: / (root path)**: Here, I fetch the data on the backend and generate initial posts (around 10 posts) to render them in the initial HTML. When a user visits this route, they will see the initial posts directly, as shown in the preview video. Then, I manage the queries and actions with react-query, especially infiniteQuery (infinite scroll), to render more posts.
 ![App Screenshot](https://www.linkpicture.com/q/Screenshot-from-2023-05-31-00-50-41.png)
 
-**route: /post/[postid]**: this dynamic route displays a spesific post and comments. I rendered this posts by just one component named TweetDisplay. I rendered recursively. It could be infinite comments. All componenst have their own seperated states includes react-query states. 
+**route: /post/[postid]**: This dynamic route displays a specific post and its comments. I render these posts using a single component called TweetDisplay, which I render recursively. There could be infinite comments. All components have their own separate states, including react-query states.
 ![App Screenshot](https://www.linkpicture.com/q/Screenshot-from-2023-05-31-00-43-10.png)
 
-**route: /user/[userid]/[tweets-type]**: This route takes two dynamic path: userid and tweets-type. tweets-type is to list selected menu on navbar under profile informations. default path is [user-tweets] when click Likes on navbar it will be user/uid/user-likes. i saw it on twitter and implemented this project. Here also i render initial posts on server and manage posts same way as i manage posts root path.
+**route: /user/[userid]/[tweets-type]**: This route takes two dynamic paths: userid and tweets-type. The tweets-type is used to list the selected menu on the navbar under profile information. The default path is [user-tweets]. When the user clicks on "Likes" in the navbar, the path will be user/uid/user-likes. I saw this on Twitter and implemented it in this project. Here, I also render initial posts on the server and manage the posts in the same way as I manage the posts in the root path.
 ![App Screenshot](https://www.linkpicture.com/q/Screenshot-from-2023-05-31-01-06-45.png)
 
 
 
-**route: /search**: Search page to find user with display/and username
+**route: /search**: This is the search page to find users based on their display name and username.
 ![App Screenshot](https://www.linkpicture.com/q/Screenshot-from-2023-05-31-01-02-28.png)
 
 
