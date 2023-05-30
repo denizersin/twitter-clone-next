@@ -1,0 +1,33 @@
+#nav-spinner.loaded {
+    width: 0%;
+    animation: nav-loaded .3s ease-in-out;
+
+}
+
+#nav-spinner.loading {
+    width: 70%;
+    animation: nav-loading 1s ease-in-out;
+}
+
+
+@keyframes nav-loading {
+    0% {
+        width: 0%;
+    }
+    100%{
+        width: 70%;
+    }
+}
+@keyframes nav-loaded {
+    0% {
+        width: 70%;
+    }
+    100%{
+        width: 100%;
+    }
+}
+a.active{
+    color: #fff !important;
+    background-color: #007bff !important;
+    border-color: #007bff !important;
+}

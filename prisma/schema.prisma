@@ -1,0 +1,92 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             Int        @id @default(autoincrement())
+  displayName    String
+  name           String
+  email          String     @unique
+  password       String
+  followersCount Int        @default(0)
+  followingCount Int        @default(0)
+  avatar         String?
+  posts          Post[]
+  likes          Like[]     @relation("PostToLike")
+  followings     Follower[] @relation("FollowerToUser")
+  followers      Follower[] @relation("followerPref")
+}
+
+model Follower {
+  id                 Int    @id @default(autoincrement())
+  following          User   @relation("followerPref", fields: [followingId], references: [id])
+  followingId        Int
+  follower           User   @relation("FollowerToUser", fields: [followerId], references: [id])
+  followerId         Int
+  follower_following String? @unique 
+
+}
+
+model Post {
+  id        Int      @id @default(autoincrement())
+  owner     User     @relation(fields: [ownerId], references: [id])
+  ownerId   Int
+  createdAt DateTime @default(now())
+  likes     Like[]   @relation("PostToLike")
+  type      String
+
+  repostCount  Int @default(0)
+  commentCount Int @default(0)
+  likeCount    Int @default(0)
+
+  normalPost  NormalPost?  @relation("NormalPostToPost")
+  repost      Repost?      @relation("RepostToPost")
+  commentPost CommentPost? @relation("CommentPostToPost")
+
+  reposts Repost[] @relation("RepostToPost1")
+}
+
+model Repost {
+  id     Int  @id @default(autoincrement())
+  post   Post @relation("RepostToPost", fields: [postId], references: [id])
+  postId Int  @unique
+
+  repostedPost   Post @relation("RepostToPost1", fields: [repostedPostId], references: [id])
+  repostedPostId Int
+
+  @@unique([postId, repostedPostId])
+}
+
+model CommentPost {
+  id              Int    @id @default(autoincrement())
+  post            Post   @relation("CommentPostToPost", fields: [postId], references: [id])
+  postId          Int    @unique
+  content         String
+  mainPostId      Int
+  commentedPostId Int
+}
+
+model NormalPost {
+  id      Int    @id @default(autoincrement())
+  content String
+  post    Post   @relation("NormalPostToPost", fields: [postId], references: [id])
+  postId  Int    @unique
+}
+
+model Like {
+  id      Int  @id @default(autoincrement())
+  owner   User @relation("PostToLike", fields: [ownerId], references: [id])
+  ownerId Int
+  post    Post @relation("PostToLike", fields: [postId], references: [id])
+  postId  Int
+
+  @@unique([ownerId, postId])
+}

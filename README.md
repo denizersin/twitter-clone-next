@@ -1,34 +1,70 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# Twitter Clone
 
-First, run the development server:
+I made twitter clone with nextjs. I focused on new app directory and server/client component futures. This new backend on fronted approach with server components makes creating full-stack aps so easy and provides more performance. For better User Exp. I render first states on backend and get html then i manage state with react-query the way i manage single page apps.
+
+# Preview 
+
+
+## 🔗 Links
+[Youtube Preview](https://www.youtube.com/watch?v=1EwvgZ-Lx0k)
+
+
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+`DATABASE_URL` ="mysql://usernama:password@127.0.0.1:3306/db_name"
+`NEXTAUTH_URL`=http://localhost:3000
+
+//random secret keys
+`NEXTAUTH_SECRET`=lsdkmlskdmflksdkskmsdnkj
+`SECRET_KEY`=eefeijfkskjhfuhudhfudd
+## Installation
+
+Install my-project with npm
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+  npm install 
+  
+  npx prisma migrate dev --name init
+
+  npm run dev
 ```
+    
+## Main Tech Stack
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Client:** React, React-Query, TailwindCSS, Typescript, 
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**Server:** NextJS
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+**Server Helper Libs:** Next-Auth(Authentiaction) Prisma(ORM), jsonWebToken, bcrypt
 
-## Learn More
+**Database:** MySQL
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Screenshots
+**Tables and relations:**
+![App Screenshot](https://www.linkpicture.com/q/Screenshot-from-2023-05-29-01-19-34.png)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+**route: / (root path)**: here i get data on backend and generate initial posts (like 10 posts) and render for initial html. So when user visit this route, user sees initial posts directly as i show on preview video. Then i manage query and action with react-query especially infiniteQuery(infinite scroll) to render more posts.
+![App Screenshot](https://www.linkpicture.com/q/Screenshot-from-2023-05-31-00-50-41.png)
 
-## Deploy on Vercel
+**route: /post/[postid]**: this dynamic route displays a spesific post and comments. I rendered this posts by just one component named TweetDisplay. I rendered recursively. It could be infinite comments. All componenst have their own seperated states includes react-query states. 
+![App Screenshot](https://www.linkpicture.com/q/Screenshot-from-2023-05-31-00-43-10.png)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**route: /user/[userid]/[tweets-type]**: This route takes two dynamic path: userid and tweets-type. tweets-type is to list selected menu on navbar under profile informations. default path is [user-tweets] when click Likes on navbar it will be user/uid/user-likes. i saw it on twitter and implemented this project. Here also i render initial posts on server and manage posts same way as i manage posts root path.
+![App Screenshot](https://www.linkpicture.com/q/Screenshot-from-2023-05-31-01-06-45.png)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+**route: /search**: Search page to find user with display/and username
+![App Screenshot](https://www.linkpicture.com/q/Screenshot-from-2023-05-31-01-02-28.png)
+
+
+
+
+
+
+
+
