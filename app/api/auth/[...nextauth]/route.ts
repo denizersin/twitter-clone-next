@@ -15,6 +15,8 @@ const handler = NextAuth({
             },
             authorize: async (credentials, req) => {
                 // Add logic here to look up the user from the credentials supplied
+                // alert('qwe')
+                console.log("3783492349482349032489");
                 const res = await fetch("http://localhost:3000/api/login", {
                     method: "POST",
                     headers: {

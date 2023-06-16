@@ -11,10 +11,6 @@ const Register: FC<IpageProps> = ({ }: IpageProps) => {
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
     const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
-    const [tcNum, setTcNum] = useState("");
-    const [phoneNum, setPhoneNum] = useState("");
-    const [adress, setAdress] = useState("");
     const [success, setSuccess] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
     const route = useRouter();
@@ -49,6 +45,8 @@ const Register: FC<IpageProps> = ({ }: IpageProps) => {
         registerUser();
     };
 
+    const router = useRouter();
+
     return (
         <div>
             <h1>Register</h1>
@@ -78,31 +76,10 @@ const Register: FC<IpageProps> = ({ }: IpageProps) => {
                     onChange={(e) => setFirstName(e.target.value)}
                     placeholder="First Name"
                 />
-                <input
-                    name="lastName"
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
-                    placeholder="Last Name"
-                />
-                <input
-                    name="tcNum"
-                    value={tcNum}
-                    onChange={(e) => setTcNum(e.target.value)}
-                    placeholder="TC Number"
-                />
-                <input
-                    name="phoneNum"
-                    value={phoneNum}
-                    onChange={(e) => setPhoneNum(e.target.value)}
-                    placeholder="Phone Number"
-                />
-                <input
-                    name="adress"
-                    value={adress}
-                    onChange={(e) => setAdress(e.target.value)}
-                    placeholder="Adress"
-                />
+
+
                 <button type="submit">Register</button>
+                <button type="button" onClick={()=>router.push('/auth/login')}>Login</button>
 
             </form>
             {

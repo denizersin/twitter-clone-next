@@ -1,5 +1,6 @@
 "use client";
 import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 import React, { FC, FormEventHandler, useEffect, useState } from 'react'
 
 interface IpageProps {
@@ -24,6 +25,7 @@ const Login: FC<IpageProps> = ({ }: IpageProps) => {
         setIsSubmitting(true);
     };
 
+    const router=useRouter();
 
 
 
@@ -45,6 +47,10 @@ const Login: FC<IpageProps> = ({ }: IpageProps) => {
                     type="password"
                 />
                 <button type="submit">Login</button>
+                <br />
+                <button type='button' onClick={() => {router.push('/auth/register'); }}>
+                    Register
+                </button>
                 {isSubmitting && <p>Logging in...</p>}
             </form>
         </div>

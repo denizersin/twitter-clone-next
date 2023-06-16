@@ -11,6 +11,10 @@ interface IHomeProps {
 
 const Home: FC<IHomeProps> = ({ userData, initialUserPosts }: IHomeProps) => {
 
+    useEffect(() => {
+        console.log('Home Page');
+        fetch('https://jsonplaceholder.typicode.com/todos/1')
+    }, [])
 
     return (
         <PageContainer>
