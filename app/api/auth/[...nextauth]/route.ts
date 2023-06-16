@@ -1,6 +1,6 @@
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
-const handler = NextAuth({
+export const auth_options = {
     providers: [
         CredentialsProvider({
             // The name to display on the sign in form (e.g. "Sign in with...")
@@ -45,7 +45,7 @@ const handler = NextAuth({
     }
     ,
     callbacks: {
-        
+
         jwt: async ({ token, user }) => {
             return { ...token, ...user };
         },
@@ -55,9 +55,9 @@ const handler = NextAuth({
             return session;
         },
     },
-});
+}
 
-
+const handler = NextAuth(auth_options);
 export { handler as GET, handler as POST };
 
 //!handler is a function so next-auth can use it as a route.
